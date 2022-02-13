@@ -1,4 +1,4 @@
-package basic.brute;
+package basic.practice;
 
 /**
  * 순열 예제
