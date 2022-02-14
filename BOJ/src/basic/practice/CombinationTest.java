@@ -7,12 +7,10 @@ package basic.practice;
 public class CombinationTest {
     public static int r;
     public static int[] arr, result;
-    public static boolean[] checkList;
     public static void main(String[] args) {
         r = 2;
-        arr = new int[]{1, 2, 3};
+        arr = new int[]{1, 2, 3, 4};
         result = new int[r];
-        checkList = new boolean[arr.length];
         dfs(0, 0); // depth, begin with
     }
 
