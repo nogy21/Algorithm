@@ -11,9 +11,8 @@ import java.util.Queue;
  * 단지번호붙이기(https://www.acmicpc.net/problem/2667)
  */
 public class Ex2667 {
-    static int n, apartNum = 0;
-    private static int[] aparts = new int[25 * 25];
-    static StringBuilder sb = new StringBuilder();
+    static int n, apartmentNum = 0;
+    private static int[] apartments = new int[25 * 25];
     static int[][] map;
     static boolean[][] visited;
     static int[] dx = {-1, 1, 0, 0};
@@ -35,20 +34,20 @@ public class Ex2667 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (map[i][j] == 1 && !visited[i][j]) {
-                    apartNum++;
+                    apartmentNum++;
                     bfs(i, j);
                 }
             }
         }
 
-        Arrays.sort(aparts);
-        System.out.println(apartNum);
+        Arrays.sort(apartments);
+        System.out.println(apartmentNum);
 
-        for (int i = 0; i < aparts.length; i++) {
-            if (aparts[i] == 0) {
-            } else {
-                System.out.println(aparts[i]);
+        for (int apartment : apartments) {
+            if (apartment == 0) {
+                continue;
             }
+            System.out.println(apartment);
         }
     }
 
@@ -56,7 +55,7 @@ public class Ex2667 {
         Queue<Node> q = new LinkedList<>();
         q.offer(new Node(x, y));
         visited[x][y] = true;
-        aparts[apartNum]++;
+        apartments[apartmentNum]++;
 
         while (!q.isEmpty()) {
             Node node = q.poll();
@@ -70,10 +69,10 @@ public class Ex2667 {
                     continue;
                 }
 
-                if(map[nx][ny] == 1 && !visited[nx][ny]){
+                if (map[nx][ny] == 1 && !visited[nx][ny]) {
                     q.offer(new Node(nx, ny));
                     visited[nx][ny] = true;
-                    aparts[apartNum]++;
+                    apartments[apartmentNum]++;
                 }
             }
         }
