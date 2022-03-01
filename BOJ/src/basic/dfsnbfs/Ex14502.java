@@ -3,6 +3,7 @@ package basic.dfsnbfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -24,12 +25,12 @@ public class Ex14502 {
 
         map = new int[n][m];
         copy_map = new int[n][m];
+        q = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
-                copy_map[i][j] = map[i][j];
             }
         }
 
@@ -55,26 +56,18 @@ public class Ex14502 {
         }
     }
 
-    private static void countSafeArea() {
-    }
-
     private static void copyMap() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 copy_map[i][j] = map[i][j];
+                if (copy_map[i][j] == 2) {
+                    q.offer(new Point(i, j));
+                }
             }
         }
     }
 
     private static void spreadVirus() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (copy_map[i][j] == 2) {
-                    q.add(new Point(i, j));
-                }
-            }
-        }
-
         while (!q.isEmpty()) {
             Point p = q.poll();
             int x = p.getX();
@@ -83,17 +76,28 @@ public class Ex14502 {
             for (int i = 0; i < 4; i++) {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
-
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
-                    if (map[nx][ny] == 0) {
-                        map[nx][ny] = 2;
-                        q.add(new Point(nx, ny));
-                    }
+                    continue;
+                }
+                if (copy_map[nx][ny] == 0) {
+                    copy_map[nx][ny] = 2;
+                    q.offer(new Point(nx, ny));
                 }
             }
         }
     }
 
+    private static void countSafeArea() {
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (copy_map[i][j] == 0) {
+                    cnt++;
+                }
+            }
+        }
+        ans = Math.max(ans, cnt);
+    }
 }
 
 class Point {
