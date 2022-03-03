@@ -41,7 +41,7 @@ public class Ex16236_2 {
             boolean[][] visited = new boolean[20][20];
             Queue<Point> q = new LinkedList<Point>();
             visited[p.x][p.y] = true;
-            q.offer(p);
+            q.offer(new Point(p.x, p.y, 0));
             p.d = INF; // 최단거리 탐색을 위해 최대값으로 초기화
 
             while (!q.isEmpty()) {
