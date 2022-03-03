@@ -5,14 +5,11 @@ import java.util.*;
 
 /**
  * 아기 상어(https://www.acmicpc.net/problem/16236)
- *
- *
  */
 public class Ex16236 {
     static final int INF = 987654321;
     static int n;
     static int[][] map = new int[20][20];
-    static boolean[][] visit;
     static int[] dr = {1, -1, 0, 0};
     static int[] dc = {0, 0, 1, -1};
 
