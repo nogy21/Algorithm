@@ -52,7 +52,7 @@ public class Ex16236_2 {
                 // 물고기의 크기가 상어보다 큰 경우
                 if (map[curr.x][curr.y] > size) continue;
                 // 먹기 가능
-                if (map[curr.x][curr.y] != 0 && map[curr.y][curr.y] < size) {
+                if (map[curr.x][curr.y] != 0 && map[curr.x][curr.y] < size) {
                     if (curr.d < p.d) {
                         p = curr;
                     } else if (curr.d == p.d) { // 같은 거리인 경우 우선 탐색 순위
