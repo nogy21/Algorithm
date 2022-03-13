@@ -1,4 +1,4 @@
-package basic.segment;
+package basic.prefixsum;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package basic.segment;
+package basic.prefixsum;
 
 import java.io.*;
 import java.util.*;
