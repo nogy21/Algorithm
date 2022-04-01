@@ -37,7 +37,7 @@ public class Ex2606 {
         count++;
 
         // 해당 노드와 연결된 노드 && 방문하지 않은 노드에 대해 dfs
-        for (int i = 0; i < numberOfNodes; i++) {
+        for (int i = 1; i <= numberOfNodes; i++) {
             if (map[startWith][i] == 1 && !check[i]) {
                 dfs(i);
             }
