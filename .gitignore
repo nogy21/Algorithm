@@ -208,3 +208,7 @@ hs_err_pid*
 replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij,java
+Programmers/src/main/오늘의집/Solution1.java
+Programmers/src/main/오늘의집/Solution2.java
+Programmers/src/test/오늘의집/SolutionTest.java
+Programmers/src/test/오늘의집/SolutionTest2.java
