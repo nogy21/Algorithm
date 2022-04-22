@@ -1,7 +1,6 @@
 package main.lv2.소수찾기;
 
 import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * 고득점 Kit 완전탐색
@@ -25,11 +24,7 @@ public class Solution {
         // 순열
         perm("", numbers, set);
 
-        Iterator it = set.iterator();
-        while (it.hasNext()) {
-            int num = (int) it.next();
-            set.remove(num);
-
+        for (int num : set) {
             if (isPrime(num)) {
                 answer++;
             }
