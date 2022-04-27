@@ -29,39 +29,47 @@ public class Solution {
         }
 
         // 신고받은유저, 신고한 유저 목록 정리
-        HashMap<String, ArrayList<String>> reportMap = findReporterList(reportSet);
+        HashMap<String, ArrayList<String>> notifiedMap = findNotifiedMap(reportSet);
 
-        // 정지된 유저 판단, 신고한 유저에게 알림
-        HashMap<String, Integer> reporterMap = new HashMap<>();
-        for (ArrayList<String> reporterList : reportMap.values()) {
-            if (reporterList.size() >= k) {
-                for (String reporter : reporterList) {
-                    reporterMap.put(reporter, reporterMap.getOrDefault(reporter, 0) + 1);
-                }
-            }
-        }
+        // 정지된 유저 판단, 신고한 유저 저장
+        HashMap<String, Integer> reportMap = findReportMap(notifiedMap, k);
+
+        // 신고한 유저 알림
         for (int i = 0; i < id_list.length; i++) {
-            answer[i] = reporterMap.getOrDefault(id_list[i], 0);
+            answer[i] = reportMap.getOrDefault(id_list[i], 0);
         }
+
         return answer;
     }
 
-    private HashMap<String, ArrayList<String>> findReporterList(HashSet<String> reportSet) {
+    private HashMap<String, ArrayList<String>> findNotifiedMap(HashSet<String> reportSet) {
         // 신고한 유저 목록(맵)에 신고 받은 자를 key, 신고한 사람 리스트를 value 로 저장
-        HashMap<String, ArrayList<String>> reportMap = new HashMap<>();
+        HashMap<String, ArrayList<String>> notifiedMap = new HashMap<>();
         for (String report : reportSet) {
             String reporter = report.substring(0, report.indexOf(" "));
             String notifiedId = report.substring(report.indexOf(" ") + 1);
             // System.out.println(reporter + " " + notifiedId);
 
             // 신고받은 사람이 이미 신고 받은 적이 있으면 신고자 리스트를 불러옴. 없으면 새로 리스트 생성
-            ArrayList<String> reporterList = reportMap.getOrDefault(notifiedId, null);
+            ArrayList<String> reporterList = notifiedMap.getOrDefault(notifiedId, null);
             if (reporterList == null) {
                 reporterList = new ArrayList<>();
             }
 
             reporterList.add(reporter);
-            reportMap.put(notifiedId, reporterList);
+            notifiedMap.put(notifiedId, reporterList);
+        }
+        return notifiedMap;
+    }
+
+    private HashMap<String, Integer> findReportMap(HashMap<String, ArrayList<String>> notifiedMap, int k) {
+        HashMap<String, Integer> reportMap = new HashMap<>();
+        for (ArrayList<String> reporterList : notifiedMap.values()) {
+            if (reporterList.size() >= k) {
+                for (String reporter : reporterList) {
+                    reportMap.put(reporter, reportMap.getOrDefault(reporter, 0) + 1);
+                }
+            }
         }
         return reportMap;
     }
