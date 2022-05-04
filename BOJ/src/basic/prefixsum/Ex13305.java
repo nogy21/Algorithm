@@ -3,8 +3,7 @@ package basic.prefixsum;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 /**
@@ -20,25 +19,25 @@ public class Ex13305 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[] cities = new int[N - 1];
+        BigInteger[] cities = new BigInteger[N - 1];
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N - 1; i++) {
-            cities[i] = Integer.parseInt(st.nextToken());
+            cities[i] = new BigInteger(st.nextToken());
         }
 
-        int[] oilPrice = new int[N];
+        BigInteger[] oilPrice = new BigInteger[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            oilPrice[i] = Integer.parseInt(st.nextToken());
+            oilPrice[i] = new BigInteger(st.nextToken());
         }
 
-        int result = 0;
-        int minOilPrice = oilPrice[0];
+        BigInteger result = BigInteger.valueOf(0);
+        BigInteger minOilPrice = oilPrice[0];
         for (int i = 0; i < N - 1; i++) {
-            if (oilPrice[i] < minOilPrice) {
+            if (oilPrice[i].compareTo(minOilPrice) < 0) {
                 minOilPrice = oilPrice[i];
             }
-            result += (minOilPrice * cities[i]);
+            result = result.add(minOilPrice.multiply(cities[i]));
         }
 
         System.out.println(result);
