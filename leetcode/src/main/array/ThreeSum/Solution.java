@@ -3,7 +3,11 @@ package array.ThreeSum;
 import java.util.*;
 
 public class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
+    /**
+     * Brute force
+     * O(n^2)
+     */
+    public List<List<Integer>> threeSumWithBruteForce(int[] nums) {
         Arrays.sort(nums);
 
         Set<List<Integer>> resultSet = new HashSet<>();
@@ -33,5 +37,33 @@ public class Solution {
         result.addAll(resultSet);
 
         return result;
+    }
+
+    /**
+     * Two pointer
+     * O(n^2)
+     */
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> ret = new HashSet<>();
+        if (nums.length == 0) {
+            return new ArrayList<>(ret);
+        }
+
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    ret.add(Arrays.asList(nums[i], nums[j++], nums[k--]));
+                } else if (sum > 0) {
+                    k--;
+                } else if (sum < 0) {
+                    j++;
+                }
+            }
+        }
+        return new ArrayList<>(ret);
     }
 }
