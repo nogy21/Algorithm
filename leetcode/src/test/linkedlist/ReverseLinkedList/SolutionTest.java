@@ -1,4 +1,4 @@
-package test.linkedlist;
+package test.linkedlist.ReverseLinkedList;
 
 import main.linkedlist.ReverseLinkedList.ListNode;
 import main.linkedlist.ReverseLinkedList.Solution;
