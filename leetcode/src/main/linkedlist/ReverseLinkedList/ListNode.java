@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class ListNode {
     int val;
-    ListNode next;
+    public ListNode next;
 
     public ListNode() {
     }
@@ -19,7 +19,7 @@ public class ListNode {
     }
 
     public static ListNode of(int... integers) {
-        if (integers == null || integers.length == 0) throw new IllegalArgumentException();
+        if (integers == null || integers.length == 0) return null;
 
         ListNode head = new ListNode(0);
         ListNode last = head;
