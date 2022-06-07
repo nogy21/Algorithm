@@ -1,6 +1,5 @@
 package linkedlist.RemoveNthNodeFromEndOfList;
 
-import main.linkedlist.ReverseLinkedList.ListNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

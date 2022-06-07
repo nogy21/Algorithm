@@ -1,5 +1,7 @@
 package main.linkedlist.LinkedListCycle;
 
+import main.linkedlist.ListNode;
+
 /**
  * 141. Linked List Cycle
  * : Given head, the head of a linked list, determine if the linked list has a cycle in it.
@@ -19,15 +21,5 @@ public class Solution {
             }
         }
         return false;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
     }
 }

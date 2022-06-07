@@ -1,6 +1,6 @@
 package test.linkedlist.ReverseLinkedList;
 
-import main.linkedlist.ReverseLinkedList.ListNode;
+import main.linkedlist.ListNode;
 import main.linkedlist.ReverseLinkedList.Solution;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class SolutionTest {
     private void test(ListNode expected, ListNode given) {
         // when
         Solution sol = new Solution();
-        ListNode actual = sol.reverseList(given);
+        ListNode actual = sol.reverseList2(given);
 
         // then
         assertEquals(expected, actual);
