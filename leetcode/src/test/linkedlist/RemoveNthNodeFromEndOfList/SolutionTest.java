@@ -1,5 +1,7 @@
-package linkedlist.RemoveNthNodeFromEndOfList;
+package test.linkedlist.RemoveNthNodeFromEndOfList;
 
+import main.linkedlist.ListNode;
+import main.linkedlist.RemoveNthNodeFromEndOfList.Solution;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +14,7 @@ public class SolutionTest {
                 () -> test(ListNode.of(),
                         ListNode.of(1), 1),
                 () -> test(ListNode.of(1),
-                        main.linkedlist.ReverseLinkedList.ListNode.of(1,2), 1)
+                        ListNode.of(1,2), 1)
         );
     }
 

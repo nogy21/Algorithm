@@ -1,4 +1,6 @@
-package linkedlist.RemoveNthNodeFromEndOfList;
+package main.linkedlist.RemoveNthNodeFromEndOfList;
+
+import main.linkedlist.ListNode;
 
 /**
  * 19. Remove Nth Node From End of List
