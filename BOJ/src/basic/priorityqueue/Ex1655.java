@@ -3,7 +3,6 @@ package basic.priorityqueue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
@@ -22,7 +21,8 @@ import java.util.PriorityQueue;
  * : 한 줄에 하나씩 N줄에 걸쳐 백준이의 동생이 말해야 하는 수를 순서대로 출력한다.
  *
  * 아이디어
- * : 우선순위 큐, 홀수와 짝수를 구분하여 가운데 값을 높은 우선순위로 할당
+ * : 우선순위 큐. 최대 힙과 최소 힙을 함께 사용하여 중간값을 최상단에 유지
+ * => 최대힙의 루트 노드가 최소힙의 루트 노드보다 작은 값을 유지하게하여 중간값을 갖게 함
  */
 public class Ex1655 {
     public static void main(String[] args) throws IOException {
@@ -35,12 +35,13 @@ public class Ex1655 {
 
         for (int i = 0; i < N; i++) {
             int input = Integer.parseInt(br.readLine());
+            // 최대힙에 먼저 할당
             if (maxHeap.size() == minHeap.size()) {
                 maxHeap.offer(input);
             } else {
                 minHeap.offer(input);
             }
-
+            // 최대힙의 루트 노드는 최소힙의 루트 노드보다 작은 값을 가진다
             if (!maxHeap.isEmpty() && !minHeap.isEmpty()) {
                 if (maxHeap.peek() > minHeap.peek()) {
                     int temp = maxHeap.poll();
