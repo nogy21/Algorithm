@@ -25,11 +25,11 @@ package Programmers.src.main.lv2._124나라의숫자;
 public class Solution {
     public String solution(int n) {
         final String[] numbers = {"4","1","2"};
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         while (n > 0) {
-            answer = numbers[n % 3] + answer;
+            sb.insert(0, numbers[n % 3]);
             n = (n - 1) / 3;
         }
-        return answer;
+        return sb.toString();
     }
 }
