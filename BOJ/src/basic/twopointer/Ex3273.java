@@ -1,7 +1,11 @@
 package basic.twopointer;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * 두 수의 합 (https://www.acmicpc.net/problem/3273)
@@ -21,26 +25,32 @@ import java.util.Scanner;
  */
 public class Ex3273 {
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
-
-        int T = scan.nextInt();
-        int[] arr = new int[T];
-        for (int i = 0; i < T; i++) {
-            arr[i] = scan.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        int sum = scan.nextInt();
+        int x = Integer.parseInt(br.readLine());
+        Arrays.sort(arr);
 
-        int a = 0;
-        int cnt = 0;
-        for (int i = 0; i < T - 1; i++) {
-            for (int j = 1 + a; j < T; j++) {
-                if (arr[i] + arr[j] == sum) {
-                    cnt++;
-                    a++;
-                }
+        int start = 0;
+        int end = n - 1;
+        int sum = 0;
+        int result = 0;
 
+        while (start < end) {
+            sum = arr[start] + arr[end];
+            if (sum == x) {
+                result++;
+            }
+            if (sum < x) {
+                start++;
+            } else {
+                end--;
             }
         }
-        System.out.println(cnt);
+        System.out.println(result);
     }
 }
